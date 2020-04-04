@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DnD</title>
+</head>
+<body>
+    <div class="hive"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var query = "https://api.open5e.com/spells/?limit=10"
+        $.ajax({
+            url: query,
+            method: "GET"
+        }).then(function(response){
+            $(".hive").text(JSON.stringify(response.results[0]));
+        })
+    </script>
+</body>
+</html>
