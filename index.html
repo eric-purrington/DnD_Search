@@ -4,18 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DnD</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Gotu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <div class="hive"></div>
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1>The DnD Search Engine We Deserve</h1>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <i class="fas fa-dice-d20"></i>
+        <span class="navbar-brand mb-0">Pick a category</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <button class="nav-item classes">Classes</button>
+                <button class="nav-item races">Races</button>
+                <button class="nav-item weapons">Weapons</button>
+                <!-- <button class="nav-item spells">Spells</button> -->
+                <i class="fas fa-dungeon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class = "row dataDump"> 
+        <div class = "col-4">
+            <div class = "dataDump1">
+                
+            </div>
+        </div>
+        <div class = "col-4">
+            <div class = "dataDump2">
+                
+            </div>
+        </div>
+        <div class = "col-4">
+            <div class = "dataDump3">
+                
+            </div>
+        </div>
+    </div>
+    <div class = "infoDump">
+
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        var query = "https://api.open5e.com/spells/?limit=10"
-        $.ajax({
-            url: query,
-            method: "GET"
-        }).then(function(response){
-            $(".hive").text(JSON.stringify(response.results[0]));
-        })
+        var overallTerm = "";
+
+        $(".classes").on("click", function() {
+            overallTerm = "classes";
+
+            var query = "https://api.open5e.com/" + overallTerm;
+            $.ajax({
+                url: query,
+                method: "GET"
+            }).then(function(response){
+                for (var i=0; i < 12; i++){
+                    var className = $("<button>").attr("id", response.results[i].name).attr("class", "classNames").attr("data-value", i);
+                    className.text(response.results[i].name);
+                    if (i >= 0 && i < 4){
+                        $(".dataDump1").append(className);
+                    } else if (i >= 4 && i < 8) {
+                        $(".dataDump2").append(className);
+                    } else {
+                        $(".dataDump3").append(className);
+                    }
+                }
+                $(".classNames").on("click", function() {
+                    var 
+                    var hugeParagraph = response.results[$(this).attr("data-value")].archetypes[0].desc;
+                    var smaller = hugeParagraph.split("#####");
+                    for (var i = 1; i < smaller.length; i++) {
+                        var smallerer = [];
+                        smallerer.push(smaller[i].split("**_"));
+                    }
+                    console.log(smallerer);
+                });
+            });
+            $.ajax({
+                url: query,
+                method: "GET"
+            }).then(function(response){
+                console.log(response);
+            });
+
+        });
+
+
+
+
+        $(".races").on("click", function() {
+            overallTerm = "races";
+
+            var query = "https://api.open5e.com/" + overallTerm;
+            
+            $.ajax({
+                url: query,
+                method: "GET"
+            }).then(function(response){
+                console.log(response);
+            })
+        });
+
+        $(".weapons").on("click", function() {
+            overallTerm = "weapons";
+
+            var query = "https://api.open5e.com/" + overallTerm;
+            
+            $.ajax({
+                url: query,
+                method: "GET"
+            }).then(function(response){
+                console.log(response);
+            })
+        });
+        $(".spells").on("click", function() {
+            overallTerm = "spells";
+
+            var query = "https://api.open5e.com/" + overallTerm;
+            
+            $.ajax({
+                url: query,
+                method: "GET"
+            }).then(function(response){
+                console.log(response);
+            })
+        });
     </script>
 </body>
 </html>
