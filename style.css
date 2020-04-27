@@ -28,14 +28,14 @@ body, html {
 }
 
 .navbar-custom {
-    width: 74%;
+    width: 74.25%;
     margin: auto;
     margin-top: 5px;
     background-color: #107a8b;
     color: #3b5441;
     font-weight: bold;
 }
-.fa-dice-d20 {
+.fa-dice-d20, .fa-d-and-d {
     margin-right: 25px;
 }
 .fa-dungeon {
@@ -51,6 +51,16 @@ i {
     color: #3b5441;
     background-color: #107a8b;
     margin: 5px 10px;
+    border-radius: 5px;
+    padding:5px;
+    font-weight: bold;
+}
+
+.nav2 button {
+    border: 1px solid #3b5441;
+    color: #3b5441;
+    background-color: #107a8b;
+    margin: 5px 2px;
     border-radius: 5px;
     padding:5px;
     font-weight: bold;
