@@ -44,13 +44,10 @@ body, html {
     font-weight: bold;
 }
 
-.fa-dice-d20, .fa-d-and-d {
-    margin-right: 25px;
+.fa-d-and-d, .fa-dungeon {
+    margin-right: 15px;
 }
 
-.fa-dungeon {
-    margin-left: 25px;
-}
 
 i {
     margin: auto;
