@@ -4,6 +4,8 @@ const possibleRaces = ["Dwarf", "Elf", "Halfling", "Human", "Dragonborn", "Gnome
 
 const possibleWeaponTypes = ["Simple Melee", "Simple Ranged", "Martial Melee", "Martial Ranged"];
 
+const possibleSpellCasters = ["Bard", "Cleric", "Druid", "Sorcerer", "Warlock", "Wizard"];
+
 const query = "https://api.open5e.com/";
 
 function createNav2() {
@@ -80,7 +82,8 @@ $(".weapons").on("click", function () {
     $(".nav2Here").empty();
     createNav2();
     $(".picka2").text("Pick a weapon type");
-    $("weaponsVault").empty;
+    $(".weaponsVault").empty;
+    $(".weaponTable").empty;
     for (var i = 0; i < possibleWeaponTypes.length; i++) {
         var weaponType = $("<button>").attr("class", "weaponTypes nav-item").attr("data-value", i);
         weaponType.text(possibleWeaponTypes[i]);
@@ -89,56 +92,72 @@ $(".weapons").on("click", function () {
 });
 function getWeaponData() {
     var weaponTypeChosen = $(this).attr("data-value");
+    $(".weaponsVault").html("");
     $.ajax({
         url: query + "weapons",
         method: "GET"
     }).then(function (response) {
-        console.log(response);
         handleWeaponInfo(response, weaponTypeChosen);
     });
 };
 function handleWeaponInfo(response, weaponTypeChosen) {
+    var weaponTable = `
+    <table class="weaponTable">
+        <tr>
+            <th>Name</th>
+            <th>Damage</th>
+            <th>Properties</th>
+            <th>Cost</th>
+        </tr>
+    </table>`
+    $(".weaponsVault").append(weaponTable);
     for (var i = 0; i < response.results.length; i++) {
         if (response.results[i].category == possibleWeaponTypes[weaponTypeChosen] + " Weapons") {
-            var weapon = $("<h3>").text(`${response.results[i].name}: ${response.results[i].damage_dice} ${response.results[i].damage_type} damage; ${response.results[i].properties} ${response.results[i].cost}`);
-            $(".weaponsVault").append(weapon);
+            var weapon = `
+            <tr>
+                <td>${response.results[i].name}</td>
+                <td>${response.results[i].damage_dice} ${response.results[i].damage_type} damage</td>
+                <td>${response.results[i].properties.join(", ")}</td>
+                <td>${response.results[i].cost}</td>
+            </tr>`;
+            $(".weaponTable").append(weapon);
         }
     }
 }
 
+// Spells
+$(".spells").on("click", function () {
+    $(".nav2Here").empty();
+    createNav2();
+    $(".picka2").text("Pick a caster");
+    for (var i = 0; i < possibleSpellCasters.length; i++) {
+        var spellCaster = $("<button>").attr("class", "spellCasters nav-item").attr("data-value", i);
+        spellCaster.text(possibleSpellCasters[i]);
+        $(".nav2").append(spellCaster);
+    }
+});
+function getSpellData() {
+    var spellCasterChosen = $(this).attr("data-value");
+    var query = "https://api.open5e.com/spells/?limit=321";
+    $.ajax({
+        url: query,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        handleSpellInfo(response, spellCasterChosen);
+    });
+};
+function handleSpellInfo(response, spellCasterChosen) {
+    for (var i = 0; i < response.results.length; i++) {
+        if (response.results[i].dnd_class.indexOf(possibleSpellCasters[spellCasterChosen]) !== -1) {
+            console.log(response.results[i].name);
+            // ACCORDIAN
+        }
+        
+    }
+}
 
 $(document).on("click", ".classNames", getClassData);
 $(document).on("click", ".raceNames", getRaceData);
 $(document).on("click", ".weaponTypes", getWeaponData);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$(".spells").on("click", function() {
-    overallTerm = "spells";
-    var query = "https://api.open5e.com/" + overallTerm;
-    
-    $.ajax({
-        url: query,
-        method: "GET"
-    }).then(function(response){
-        console.log(response);
-    })
-});
+$(document).on("click", ".spellCasters", getSpellData);
