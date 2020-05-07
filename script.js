@@ -6,6 +6,8 @@ const possibleWeaponTypes = ["Simple Melee", "Simple Ranged", "Martial Melee", "
 
 const possibleSpellCasters = ["Bard", "Cleric", "Druid", "Sorcerer", "Warlock", "Wizard"];
 
+const possibleSpellLevel = ["Cantrip", "1st-level", "2nd-level", "3rd-level", "4th-level", "5th-level", "6th-level", "7th-level", "8th-level", "9th-level"];
+
 const query = "https://api.open5e.com/";
 
 function createNav2() {
@@ -140,9 +142,8 @@ $(".spells").on("click", function () {
 });
 function getSpellData() {
     var spellCasterChosen = $(this).attr("data-value");
-    var query = "https://api.open5e.com/spells/?limit=321";
     $.ajax({
-        url: query,
+        url: query + "spells/?limit=321",
         method: "GET"
     }).then(function (response) {
         console.log(response);
@@ -155,32 +156,35 @@ function handleSpellInfo(response, spellCasterChosen) {
         <div class="card">
           <div class="card-header" id="headingOne">
             <h2 class="mb-0">
-              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"  aria-expanded="true" aria-controls="collapseOne">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                 Cantrips
               </button>
             </h2>
           </div>
-    
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"  data-parent="#accordionExample">
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne"  data-parent="#accordionExample">
             <div class="card-body">
-
+                <ul class="cantripList" data-value="100">
+                </ul>
             </div>
           </div>
         </div>
+
         <div class="card">
           <div class="card-header" id="headingTwo">
             <h2 class="mb-0">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse"   data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 1st-Level
               </button>
             </h2>
           </div>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"   data-parent="#accordionExample">
             <div class="card-body">
-
+                <ul class="1stList" data-value="101">
+                </ul>
             </div>
           </div>
         </div>
+
         <div class="card">
           <div class="card-header" id="headingThree">
             <h2 class="mb-0">
@@ -191,7 +195,120 @@ function handleSpellInfo(response, spellCasterChosen) {
           </div>
           <div id="collapseThree" class="collapse" aria-labelledby="headingThree"   data-parent="#accordionExample">
             <div class="card-body">
+                <ul class="2ndList" data-value="102">
+                </ul>
+            </div>
+          </div>
+        </div>
 
+        <div class="card">
+          <div class="card-header" id="headingFour">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse"   data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                3rd-Level
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour"   data-parent="#accordionExample">
+            <div class="card-body">
+                <ul class="3rdList" data-value="103">
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingFive">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse"   data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                4th-Level
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFive" class="collapse" aria-labelledby="headingFive"   data-parent="#accordionExample">
+            <div class="card-body">
+                <ul class="4thList" data-value="104">
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingSix">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse"   data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                5th-Level
+              </button>
+            </h2>
+          </div>
+          <div id="collapseSix" class="collapse" aria-labelledby="headingSix"   data-parent="#accordionExample">
+            <div class="card-body">
+                <ul class="5thList" data-value="105">
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingSeven">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse"   data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                6th-Level
+              </button>
+            </h2>
+          </div>
+          <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"   data-parent="#accordionExample">
+            <div class="card-body">
+                <ul class="6thList" data-value="106">
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingEight">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse"   data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                7th-Level
+              </button>
+            </h2>
+          </div>
+          <div id="collapseEight" class="collapse" aria-labelledby="headingEight"   data-parent="#accordionExample">
+            <div class="card-body">
+                <ul class="7thList" data-value="107">
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingNine">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse"   data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                8th-Level
+              </button>
+            </h2>
+          </div>
+          <div id="collapseNine" class="collapse" aria-labelledby="headingNine"   data-parent="#accordionExample">
+            <div class="card-body">
+                <ul class="8thList" data-value="108">
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingTen">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse"   data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                9th-Level
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTen" class="collapse" aria-labelledby="headingTen"   data-parent="#accordionExample">
+            <div class="card-body">
+                <ul class="9thList" data-value="109">
+                </ul>
             </div>
           </div>
         </div>
@@ -199,8 +316,12 @@ function handleSpellInfo(response, spellCasterChosen) {
     $(".spellSack").append(spellAccordian);
     for (var i = 0; i < response.results.length; i++) {
         if (response.results[i].dnd_class.indexOf(possibleSpellCasters[spellCasterChosen]) !== -1) {
-            console.log(response.results[i].name);
-            
+            for (var j = 0; j < possibleSpellLevel.length; j++) {
+                if (response.results[i].level == possibleSpellLevel[j]) {
+                    var newLi = $("<li>").text(response.results[i].name);
+                    $(`[data-value='${j + 100}']`).append(newLi);
+                }
+            }
         }
     }
 }

@@ -48,7 +48,6 @@ body, html {
     margin-right: 15px;
 }
 
-
 i {
     margin: auto;
     color: #2cb978;
@@ -96,4 +95,17 @@ tr:hover, th {
 
 td, th {
     padding: 5px;
+}
+
+.accordion {
+    width: 74%;
+    margin: 20px auto;
+}
+.card {
+    background-color: #2cb978;
+    color: white;
+}
+.card:hover {
+    background-color: #107a8b;
+    color: white;
 }
