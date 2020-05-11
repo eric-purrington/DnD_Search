@@ -97,15 +97,29 @@ td, th {
     padding: 5px;
 }
 
-.accordion {
-    width: 74%;
+.spellSack {
     margin: 20px auto;
+    width: 75%;
 }
-.card {
-    background-color: #2cb978;
-    color: white;
-}
-.card:hover {
+
+.spellLevelNav {
     background-color: #107a8b;
+    padding: 30px;
+}
+
+.spellLevelNav a, .spellLevelNav ul, .spellLevelNav h3 {
     color: white;
+}
+
+.spellLevelNav ul, .col-9 ul {
+    list-style-type: none;
+}
+
+.spellLevelNav a:hover {
+    color: #2cb978;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    padding: 30px;
 }
