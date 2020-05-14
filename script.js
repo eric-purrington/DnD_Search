@@ -12,9 +12,12 @@ const query = "https://api.open5e.com/";
 
 function createNav2() {
   var nav2 = `
-    <nav class="navbar navbar-expand-lg navbar-custom">
+    <nav class="navbar navbar-expand-sm navbar-custom">
       <i class="fab fa-d-and-d fa-2x"></i>
-      <span class="navbar-brand mb-0 picka2">Pick a ...</span>
+      <span class="navbar-brand mb-0 h1 picka2">Pick a ...</span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fas fa-dice-d20 fa"></i></span>
+      </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav nav2">
         
@@ -205,11 +208,16 @@ function handleSpellInfo(response, spellCasterChosen) {
           var newLi = `
           <li>
             <div class="accordion" id="accordionExample">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#${response.results[i].name.replace(/ /g,"")}" aria-expanded="false" aria-controls="${response.results[i].name.replace(/ /g,"")}">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#${response.results[i].name.replace(/[ '-/]/g,"")}" aria-expanded="false" aria-controls="${response.results[i].name.replace(/[ '-/]/g,"")}">
               ${response.results[i].name}
               </button>
-              <div id="${response.results[i].name.replace(/ /g,"")}" class="collapse" data-parent="#accordionExample">
-                <p>Spell info here</p>
+              <div id="${response.results[i].name.replace(/[ '-/]/g,"")}" class="collapse" data-parent="#accordionExample">
+                <p><strong>Casting Time</strong>: ${response.results[i].casting_time}</p>
+                <p><strong>Range</strong>: ${response.results[i].range}</p>
+                <p><strong>Components</strong>: ${response.results[i].components}</p>
+                <p><strong>Duration</strong>: ${response.results[i].duration}</p>
+                <p>${response.results[i].desc} ${response.results[i].higher_level}</p>
+
               </div>
             </div>
           </li>`
@@ -220,10 +228,17 @@ function handleSpellInfo(response, spellCasterChosen) {
   }
 }
 
+
 $(window).bind("scroll", function () {
-  if ($(window).scrollTop() >= 625) {
+  const spellNavOffset = $(".spellLevelNav").offset().top;
+  const scrollTop = $(window).scrollTop();
+  const spellSackOffset = $(".spellSack").offset().top;
+  console.log(spellNavOffset);
+  console.log(scrollTop);
+  if ($(window).scrollTop() == spellNavOffset) {
     $(".spellLevelNav").addClass("sticky")
-  } else {
+  }
+  if (spellNavOffset == $(".spellSack").offset().top) {
     $(".spellLevelNav").removeClass("sticky");
   }
 });

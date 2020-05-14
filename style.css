@@ -20,11 +20,14 @@ body, html {
 
 .hero-image {
   background-image: url("maggie_dnd_commission1resize.png");
-  height: 70%;
+  height: 80%;
   background-position: center;
   background-repeat: no-repeat;
+  /* background-size: cover; */
+  /* background-color: #5d5d5a; */
   position: relative;
-  margin-top: 5px;
+  /* margin-top: 5px; */
+  /* border: 1px solid black; */
 }
 
 .hero-text {
@@ -37,7 +40,7 @@ body, html {
 }
 
 .navbar-custom {
-    width: 73.75%;
+    /* width: 73.75%; */
     margin: 5px auto;
     background-color: #107a8b;
     color: #3b5441;
@@ -63,6 +66,13 @@ i {
     font-weight: bold;
 }
 
+.navbar-toggler-icon {
+    margin-top: 10px;
+}
+.navbar-toggler-icon:focus {
+    background-color: #107a8b;
+}
+
 .nav2 button {
     border: 1px solid #3b5441;
     color: #3b5441;
@@ -79,7 +89,7 @@ button:focus {
 
 table {
     margin: 20px auto;
-    width: 74%;
+    /* width: 74%; */
     background-color: #2cb978;
     color: #3b5441;
 }
@@ -99,12 +109,12 @@ td, th {
 
 .spellSack {
     margin: 20px auto;
-    width: 75%;
+    /* width: 75%; */
 }
 
 .spellLevelNav {
     background-color: #107a8b;
-    padding: 30px;
+    padding: 25px;
 }
 
 .spellLevelNav a, .spellLevelNav ul, .spellLevelNav h3 {
@@ -121,5 +131,9 @@ td, th {
 .sticky {
     position: fixed;
     top: 0;
-    padding: 30px;
+    padding: 25px;
+}
+
+.navbar-toggler-icon:focus {
+    background-color: #107a8b;
 }
