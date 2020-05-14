@@ -83,9 +83,9 @@ i {
     font-weight: bold;
 }
 
-/* button:focus {
+.navbar-nav button:focus {
     background-color: #2cb978;
-} */
+}
 
 table {
     margin: 20px auto;
@@ -108,35 +108,43 @@ td, th {
 }
 
 .spellSack {
-    margin: 20px auto;
-    /* width: 75%; */
+    margin: 30px auto;
 }
 
 .spellLevelNav {
     background-color: #107a8b;
-    padding: 25px;
+    /* margin: 0px auto;
+    justify-content: center; */
+    text-align: center;
+    padding: 10px;
 }
 
 .spellLevelNav a, .spellLevelNav ul, .spellLevelNav h3 {
     color: white;
+    /* margin: 0px auto; */
+
 }
 
 .spellLevelNav ul, .col-9 ul {
     list-style-type: none;
 }
-
+.spellLevelNav ul {
+    padding-left: 0px;
+}
 .spellLevelNav a:hover {
     color: #2cb978;
 }
+
 .sticky {
     position: fixed;
     top: 0;
-    padding: 25px;
+    padding: 10px 30px;
 }
 
 .spellBtn {
-    color: #107a8b;
+    color: black;
 }
 .spellBtn:focus {
-    background-color: white;
+    background-color: #107a8b;
+    color: white;
 }

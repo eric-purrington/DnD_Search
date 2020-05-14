@@ -152,8 +152,7 @@ function getSpellData() {
     console.log(response);
     handleSpellInfo(response, spellCasterChosen);
   });
-};
-
+}
 function makeSpellNav(spellCasterChosen) {
   var spellLevelNav = `
     <div class = "spellLevelNav">
@@ -162,7 +161,7 @@ function makeSpellNav(spellCasterChosen) {
       </ul>
     </div>`
 
-  $(".col-5").append(spellLevelNav);
+  $(".navCol").append(spellLevelNav);
 
   for (var i = 0; i < possibleSpellLevel.length; i++) {
     if (i === 0) {
@@ -173,11 +172,10 @@ function makeSpellNav(spellCasterChosen) {
     $(".spellNavList").append(spellNavLi);
   }
 }
-
 function makeSpellList(spellCasterChosen) {
   var spellLevelList = `<h1>${possibleSpellCasters[spellCasterChosen]} Spells</h1>`
 
-  $(".col-7").append(spellLevelList);
+  $(".listCol").append(spellLevelList);
 
   for (var i = 0; i < possibleSpellLevel.length; i++) {
     if (i === 0) {
@@ -193,14 +191,12 @@ function makeSpellList(spellCasterChosen) {
       <ul class="${possibleSpellLevel[i]}">
       </ul>`
     }
-    $(".col-7").append(spellLevelandUl);
+    $(".listCol").append(spellLevelandUl);
   }
 }
-
 function handleSpellInfo(response, spellCasterChosen) {
   makeSpellNav(spellCasterChosen);
   makeSpellList(spellCasterChosen);
-
   for (var i = 0; i < response.results.length; i++) {
     if (response.results[i].dnd_class.indexOf(possibleSpellCasters[spellCasterChosen]) !== -1) {
       for (var j = 0; j < possibleSpellLevel.length; j++) {
@@ -230,12 +226,7 @@ function handleSpellInfo(response, spellCasterChosen) {
 
 
 $(window).bind("scroll", function () {
-  const spellNavOffset = $(".spellLevelNav").offset().top;
-  const scrollTop = $(window).scrollTop();
-  const spellSackOffset = $(".spellSack").offset().top;
-  console.log(spellNavOffset);
-  console.log(scrollTop);
-  if ($(window).scrollTop() >= spellSackOffset) {
+  if ($(window).scrollTop() >= $(".spellSack").offset().top) {
     $(".spellLevelNav").addClass("sticky")
   } else {
     $(".spellLevelNav").removeClass("sticky");
