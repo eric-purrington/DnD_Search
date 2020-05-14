@@ -162,7 +162,7 @@ function makeSpellNav(spellCasterChosen) {
       </ul>
     </div>`
 
-  $(".col-3").append(spellLevelNav);
+  $(".col-5").append(spellLevelNav);
 
   for (var i = 0; i < possibleSpellLevel.length; i++) {
     if (i === 0) {
@@ -177,7 +177,7 @@ function makeSpellNav(spellCasterChosen) {
 function makeSpellList(spellCasterChosen) {
   var spellLevelList = `<h1>${possibleSpellCasters[spellCasterChosen]} Spells</h1>`
 
-  $(".col-9").append(spellLevelList);
+  $(".col-7").append(spellLevelList);
 
   for (var i = 0; i < possibleSpellLevel.length; i++) {
     if (i === 0) {
@@ -193,7 +193,7 @@ function makeSpellList(spellCasterChosen) {
       <ul class="${possibleSpellLevel[i]}">
       </ul>`
     }
-    $(".col-9").append(spellLevelandUl);
+    $(".col-7").append(spellLevelandUl);
   }
 }
 
@@ -208,7 +208,7 @@ function handleSpellInfo(response, spellCasterChosen) {
           var newLi = `
           <li>
             <div class="accordion" id="accordionExample">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#${response.results[i].name.replace(/[ '-/]/g,"")}" aria-expanded="false" aria-controls="${response.results[i].name.replace(/[ '-/]/g,"")}">
+              <button class="btn btn-link collapsed spellBtn" type="button" data-toggle="collapse" data-target="#${response.results[i].name.replace(/[ '-/]/g,"")}" aria-expanded="false" aria-controls="${response.results[i].name.replace(/[ '-/]/g,"")}">
               ${response.results[i].name}
               </button>
               <div id="${response.results[i].name.replace(/[ '-/]/g,"")}" class="collapse" data-parent="#accordionExample">
@@ -229,19 +229,19 @@ function handleSpellInfo(response, spellCasterChosen) {
 }
 
 
-$(window).bind("scroll", function () {
-  const spellNavOffset = $(".spellLevelNav").offset().top;
-  const scrollTop = $(window).scrollTop();
-  const spellSackOffset = $(".spellSack").offset().top;
-  console.log(spellNavOffset);
-  console.log(scrollTop);
-  if ($(window).scrollTop() == spellNavOffset) {
-    $(".spellLevelNav").addClass("sticky")
-  }
-  if (spellNavOffset == $(".spellSack").offset().top) {
-    $(".spellLevelNav").removeClass("sticky");
-  }
-});
+// $(window).bind("scroll", function () {
+//   const spellNavOffset = $(".spellLevelNav").offset().top;
+//   const scrollTop = $(window).scrollTop();
+//   const spellSackOffset = $(".spellSack").offset().top;
+//   console.log(spellNavOffset);
+//   console.log(scrollTop);
+//   if ($(window).scrollTop() == spellNavOffset) {
+//     $(".spellLevelNav").addClass("sticky")
+//   }
+//   if (spellNavOffset == $(".spellSack").offset().top) {
+//     $(".spellLevelNav").removeClass("sticky");
+//   }
+// });
 
 $(document).on("click", ".classNames", getClassData);
 $(document).on("click", ".raceNames", getRaceData);
