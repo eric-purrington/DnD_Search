@@ -229,19 +229,18 @@ function handleSpellInfo(response, spellCasterChosen) {
 }
 
 
-// $(window).bind("scroll", function () {
-//   const spellNavOffset = $(".spellLevelNav").offset().top;
-//   const scrollTop = $(window).scrollTop();
-//   const spellSackOffset = $(".spellSack").offset().top;
-//   console.log(spellNavOffset);
-//   console.log(scrollTop);
-//   if ($(window).scrollTop() == spellNavOffset) {
-//     $(".spellLevelNav").addClass("sticky")
-//   }
-//   if (spellNavOffset == $(".spellSack").offset().top) {
-//     $(".spellLevelNav").removeClass("sticky");
-//   }
-// });
+$(window).bind("scroll", function () {
+  const spellNavOffset = $(".spellLevelNav").offset().top;
+  const scrollTop = $(window).scrollTop();
+  const spellSackOffset = $(".spellSack").offset().top;
+  console.log(spellNavOffset);
+  console.log(scrollTop);
+  if ($(window).scrollTop() >= spellSackOffset) {
+    $(".spellLevelNav").addClass("sticky")
+  } else {
+    $(".spellLevelNav").removeClass("sticky");
+  }
+});
 
 $(document).on("click", ".classNames", getClassData);
 $(document).on("click", ".raceNames", getRaceData);
