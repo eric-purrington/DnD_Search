@@ -1,6 +1,6 @@
 const possibleClasses = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"];
 
-const possibleRaces = ["Dwarf", "Elf", "Halfling", "Human", "Dragonborn", "Gnome", "Half-elf", "Half-Orc", "Tiefling"];
+const possibleRaces = ["Dwarf", "Elf", "Halfling", "Human", "Dragonborn", "Gnome", "Half-Elf", "Half-Orc", "Tiefling"];
 
 const possibleWeaponTypes = ["Simple Melee", "Simple Ranged", "Martial Melee", "Martial Ranged"];
 
@@ -85,23 +85,21 @@ function handleRaceInfo(response, raceChosen) {
   for (var i = 0; i < possibleRaces.length; i++) {
     if (possibleRaces[raceChosen] == response.results[i].name) {
       var raceInfo = `<h1>${response.results[i].name}</h1>
-      <h3>${response.results[i].name} Traits</h3>
-      <p>${response.results[i].desc.substr(response.results[i].desc.indexOf('\n'))}</p>
-      <h3>${response.results[i].name} Alignment</h3>
+      <h3>Alignment</h3>
       <p>${response.results[i].alignment.substr(response.results[i].alignment.indexOf('_**') + 4)}</p>
-      <h3>${response.results[i].name} Ability Score Increase</h3>
+      <h3>Ability Score Increase</h3>
       <p>${response.results[i].asi_desc.substr(response.results[i].asi_desc.indexOf('_**') + 4)}</p>
-      <h3>${response.results[i].name} Age</h3>
+      <h3>Age</h3>
       <p>${response.results[i].age.substr(response.results[i].age.indexOf('_**') + 4)}</p>
-      <h3>${response.results[i].name} Languages</h3>
+      <h3>Languages</h3>
       <p>${response.results[i].languages.substr(response.results[i].languages.indexOf('_**') + 4)}</p>
-      <h3>${response.results[i].name} Size</h3>
+      <h3>Size</h3>
       <p>${response.results[i].size.substr(response.results[i].size.indexOf('_**') + 4)}</p>
-      <h3>${response.results[i].name} Speed</h3>
+      <h3>Speed</h3>
       <p>${response.results[i].speed_desc.substr(response.results[i].speed_desc.indexOf('_**') + 4)}</p>
-      <h3>${response.results[i].name} Traits</h3>
-      <p>${response.results[i].traits.substr(response.results[i].traits.indexOf('_**') + 4)}</p>
-      <h3>${response.results[i].name} Vision</h3>
+      <h3>Traits</h3>
+      <p>${response.results[i].desc.substr(response.results[i].desc.indexOf('\n'))} ${response.results[i].traits}</p>
+      <h3>Vision</h3>
       <p>${response.results[i].vision.substr(response.results[i].vision.indexOf('_**') + 4)}</p>`
       $(".raceReceptacle").append(raceInfo);
     }
