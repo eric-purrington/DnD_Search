@@ -148,3 +148,14 @@ td, th {
     background-color: #107a8b;
     color: white;
 }
+
+.footer .container p {
+    text-align: center;
+    font-size: large;
+    color: #3b5441;
+}
+
+.footer {
+    margin: 100px 0px 0px 0px;
+    background-color: #107a8b;
+}
