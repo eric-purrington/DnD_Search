@@ -28,6 +28,15 @@ function createNav2() {
   $(".nav2").empty();
 }
 
+function emptyInfo() {
+  $(".inspiredInstructions").html("");
+  $(".classContainer").html("");
+  $(".raceCol").html("");
+  $(".weaponsVault").html("");
+  $(".navCol").html("");
+  $(".listCol").html("");
+}
+
 // CLASSES
 $(".classes").on("click", function () {
   $(".nav2Here").empty();
@@ -81,27 +90,94 @@ function getRaceData() {
     handleRaceInfo(response, raceChosen);
   });
 };
+function createDbTraitTab() {
+  var dbTraitTab = `<table style="width:100%">
+    <tr>
+      <th>Dragon</th>
+      <th>Damage Type</th>
+      <th>Breath Weapon</th>
+    </tr>
+    <tr>
+      <td>Black</td>
+      <td>Acid</td>
+      <td>5 by 30 ft. line (Dex. save)</td>
+    </tr>
+    <tr>
+      <td>Blue</td>
+      <td>Lightning</td>
+      <td>5 by 30 ft. line (Dex. save)</td>
+    </tr>
+    <tr>
+      <td>Brass</td>
+      <td>Fire</td>
+      <td>5 by 30 ft. line (Dex. save)</td>
+    </tr>
+    <tr>
+      <td>Bronze</td>
+      <td>Lightning</td>
+      <td>5 by 30 ft. line (Dex. save)</td>
+    </tr>
+    <tr>
+      <td>Copper</td>
+      <td>Acid</td>
+      <td>5 by 30 ft. line (Dex. save)</td>
+    </tr>
+    <tr>
+      <td>Gold</td>
+      <td>Fire</td>
+      <td>15 ft. cone (Dex. save)</td>
+    </tr>
+    <tr>
+      <td>Green</td>
+      <td>Poison</td>
+      <td>15 ft. cone (Con. save)</td>
+    </tr>
+    <tr>
+      <td>Red</td>
+      <td>Fire</td>
+      <td>15 ft. cone (Dex. save)</td>
+    </tr>
+    <tr>
+      <td>Silver</td>
+      <td>Cold</td>
+      <td>15 ft. cone (Con. save)</td>
+    </tr>
+    <tr>
+      <td>White</td>
+      <td>Cold</td>
+      <td>15 ft. cone (Con. save)</td>
+    </tr>
+  </table>`
+  return dbTraitTab;
+}
 function handleRaceInfo(response, raceChosen) {
+  var dbTraitTab = createDbTraitTab();
   for (var i = 0; i < possibleRaces.length; i++) {
-    if (possibleRaces[raceChosen] == response.results[i].name) {
-      var raceInfo = `<h1>${response.results[i].name}</h1>
+    var currentRace = response.results[i];
+    if (possibleRaces[raceChosen] == currentRace.name) {
+      if (currentRace.name === "Dragonborn") {
+        var dbTraitP = `<p>${currentRace.desc.substr(currentRace.desc.indexOf("\n"))} <br> ${dbTraitTab} <br> ${currentRace.traits.split("\|\n\n").pop()}</p>`;
+      } else {
+        var dbTraitP = `<p>${currentRace.desc.substr(currentRace.desc.indexOf("\n"))} <br> ${currentRace.traits}</p>`
+      }
+      var raceInfo = `<h1>${currentRace.name}</h1>
       <h3>Alignment</h3>
-      <p>${response.results[i].alignment.substr(response.results[i].alignment.indexOf('_**') + 4)}</p>
+      <p>${currentRace.alignment.substr(currentRace.alignment.indexOf("_**") + 4)}</p>
       <h3>Ability Score Increase</h3>
-      <p>${response.results[i].asi_desc.substr(response.results[i].asi_desc.indexOf('_**') + 4)}</p>
+      <p>${currentRace.asi_desc.substr(currentRace.asi_desc.indexOf("_**") + 4)}</p>
       <h3>Age</h3>
-      <p>${response.results[i].age.substr(response.results[i].age.indexOf('_**') + 4)}</p>
+      <p>${currentRace.age.substr(currentRace.age.indexOf("_**") + 4)}</p>
       <h3>Languages</h3>
-      <p>${response.results[i].languages.substr(response.results[i].languages.indexOf('_**') + 4)}</p>
+      <p>${currentRace.languages.substr(currentRace.languages.indexOf("_**") + 4)}</p>
       <h3>Size</h3>
-      <p>${response.results[i].size.substr(response.results[i].size.indexOf('_**') + 4)}</p>
+      <p>${currentRace.size.substr(currentRace.size.indexOf("_**") + 4)}</p>
       <h3>Speed</h3>
-      <p>${response.results[i].speed_desc.substr(response.results[i].speed_desc.indexOf('_**') + 4)}</p>
+      <p>${currentRace.speed_desc.substr(currentRace.speed_desc.indexOf("_**") + 4)}</p>
       <h3>Traits</h3>
-      <p>${response.results[i].desc.substr(response.results[i].desc.indexOf('\n'))} ${response.results[i].traits}</p>
+      ${dbTraitP}
       <h3>Vision</h3>
-      <p>${response.results[i].vision.substr(response.results[i].vision.indexOf('_**') + 4)}</p>`
-      $(".raceReceptacle").append(raceInfo);
+      <p>${currentRace.vision.substr(currentRace.vision.indexOf("_**") + 4)}</p>`
+      $(".raceCol").append(raceInfo);
     }
   }
 }
