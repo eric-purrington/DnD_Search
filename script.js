@@ -13,8 +13,11 @@ const query = "https://api.open5e.com/";
 function createNav2() {
   var nav2 = `
     <nav class="navbar navbar-expand-sm navbar-custom">
-      <i class="fab fa-d-and-d fa-2x"></i>
-      <span class="navbar-brand mb-0 h1 picka2">Pick a ...</span>
+      <div class="justify-content-start">
+        <i class="fab fa-d-and-d fa-2x"></i>
+        <span class="navbar-brand picka2">Pick a ...</span>
+      </div>
+      
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"><i class="fas fa-dice-d20 fa"></i></span>
       </button>

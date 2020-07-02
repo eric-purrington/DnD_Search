@@ -68,6 +68,7 @@ i {
 
 .navbar-toggler-icon {
     margin-top: 10px;
+    /* color: #3b5441; */
 }
 .navbar-toggler-icon:focus {
     background-color: #107a8b;
