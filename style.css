@@ -17,7 +17,9 @@ body, html {
     height: 100%;
     background-image: url("gaming-pattern.png");
 }
-
+/* .testtable {
+    white-space: break-spaces;
+} */
 .hero-image {
   background-image: url("maggie_dnd_commission1resize.png");
   height: 80%;
