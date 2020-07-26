@@ -15,21 +15,15 @@
 }
 body, html {
     height: 100%;
-    background-image: url("gaming-pattern.png");
+    background-image: url("../images/gaming-pattern.png");
 }
-/* .testtable {
-    white-space: break-spaces;
-} */
+
 .hero-image {
-  background-image: url("maggie_dnd_commission1resize.png");
+  background-image: url("../images/dnd-party.png");
   height: 80%;
   background-position: center;
   background-repeat: no-repeat;
-  /* background-size: cover; */
-  /* background-color: #5d5d5a; */
   position: relative;
-  /* margin-top: 5px; */
-  /* border: 1px solid black; */
 }
 
 .hero-text {
@@ -42,7 +36,6 @@ body, html {
 }
 
 .navbar-custom {
-    /* width: 73.75%; */
     margin: 5px auto;
     background-color: #107a8b;
     color: #3b5441;
@@ -70,7 +63,6 @@ i {
 
 .navbar-toggler-icon {
     margin-top: 10px;
-    /* color: #3b5441; */
 }
 .navbar-toggler-icon:focus {
     background-color: #107a8b;
@@ -92,7 +84,6 @@ i {
 
 table {
     margin: 20px auto;
-    /* width: 74%; */
     background-color: #2cb978;
     color: #3b5441;
 }
@@ -116,16 +107,12 @@ td, th {
 
 .spellLevelNav {
     background-color: #107a8b;
-    /* margin: 0px auto;
-    justify-content: center; */
     text-align: center;
     padding: 10px;
 }
 
 .spellLevelNav a, .spellLevelNav ul, .spellLevelNav h3 {
     color: white;
-    /* margin: 0px auto; */
-
 }
 
 .spellLevelNav ul, .col-9 ul {
