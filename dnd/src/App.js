@@ -7,14 +7,17 @@ import RaceReceptacle from "./components/RaceReceptacle";
 import WeaponsVault from "./components/WeaponsVault";
 import SpellSack from "./components/SpellSack";
 import Footer from "./components/Footer";
+import API from "./utils/API";
 
 function App() {
     const nav1Options = ["Classes", "Races", "Weapons", "Spells"];
     const [query, setQuery] = useState("");
     const [nav2Options, setNav2Options] = useState([]);
+    const [response, setResponse] = useState({});
 
     function createNav2(event) {
         let chosenQuery = event.target.value;
+        API.getInfo(chosenQuery).then(response => setResponse(response));
         setQuery(chosenQuery);
         switch(chosenQuery) {
             case "Classes":
@@ -70,6 +73,7 @@ function App() {
     }
 
     function createInfoCon(event) {
+        let chosenInfoTopic = event.target.value;
 
     }
 
@@ -77,7 +81,7 @@ function App() {
         <div className="container">
             <HeroImg />
             <Navbar chooseQuery={createNav2} options={nav1Options}/>
-            {query ? <Navbar chooseData={createInfoCon} options={nav2Options}/> : ""}
+            {query ? <Navbar chooseQuery={createInfoCon} options={nav2Options}/> : ""}
             {}
             <Footer />
         </div>
